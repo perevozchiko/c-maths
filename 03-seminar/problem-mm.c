@@ -5,6 +5,8 @@
 // Find min and max in array
 void findMinMax(int* arr, int len)
 {
+    assert(len > 0);
+    
     int min = arr[0];
     int max = arr[0];
     for (int i = 0; i < len; i++)
