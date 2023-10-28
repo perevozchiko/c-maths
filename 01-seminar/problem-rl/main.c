@@ -8,7 +8,7 @@ int iabs(int x)
 
 int eu_mod(int x, int y)
 {
-    int r;
+   int r;
     assert(y != 0);
     r = x % y;
     if (r < 0) r += iabs(y);
@@ -18,23 +18,34 @@ int eu_mod(int x, int y)
 int gcd(int x, int y)
 {
     int q = eu_mod(x, y);
-    return (q == 0) ? y : gcd(y, q);
+    int res = 0;
+    while (q != 0)
+    {
+        res = q;
+        q = eu_mod(y, q);
+    }
+    return res;
 }
 
+// find sum to num % first and second numbers
+int summNumbers(int allNum, int first, int second)
+{
+    int summ = 0;
+    for (int i = 0; i <= allNum; i++)
+    {
+       if (i % first == 0 || i % second == 0) 
+       {
+           summ += i;
+       }
+    }
+    return summ;
+}
 
 int main()
 {
-    while(1)
-    {
-        int x, y;
-        printf("Input two number:");
-        scanf("%d%d", &x, &y);
-
-        if (x == -1 || y == -1) break;
-        int result = gcd(x, y);
-
-        printf("Result: %d \n", result);
-
-    }
-    return 0;
+    int x, y;
+    printf("Input two number:");
+    scanf("%d%d", &x, &y);
+    int result = gcd(x, y);
+    printf("Result: %d \n", result);
 }
