@@ -88,13 +88,19 @@ int main()
     {
         for (long long b = 0; b < maxB; ++b)
         {
-           long long currentPrimeNumbers = getMaxPrimeNumbers(a, b, &sieveArr, maxN); 
-           if (currentPrimeNumbers > maxPrimeNumbers)
-           {
+            if (!isPrime(&sieveArr, b))
+            {
+                continue;
+            }
+
+            long long currentPrimeNumbers = getMaxPrimeNumbers(a, b, &sieveArr, maxN); 
+
+            if (currentPrimeNumbers > maxPrimeNumbers)
+            {
                aExpression = a;
                bExpression = b;
                maxPrimeNumbers = currentPrimeNumbers;
-           }
+            }
         }
     }
 
